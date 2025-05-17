@@ -1,0 +1,141 @@
+{
+  "info": {
+    "name": "Order Management API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_postman_id": "order-management-api-test"
+  },
+  "item": [
+    {
+      "name": "Get All Categories",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/categories",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["categories"]
+        }
+      }
+    },
+    {
+      "name": "Get All Products",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/products",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["products"]
+        }
+      }
+    },
+    {
+      "name": "Create Order",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"seatLetter\": \"A\",\n  \"seatNumber\": 5\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/orders",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["orders"]
+        }
+      }
+    },
+    {
+      "name": "Update Order (Add Buyer + Products)",
+      "request": {
+        "method": "PUT",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"buyerEmail\": \"test@example.com\",\n  \"productIds\": [1, 2]\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/orders/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["orders", "1"]
+        }
+      }
+    },
+    {
+      "name": "Cancel Order",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/orders/1/cancel",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["orders", "1", "cancel"]
+        }
+      }
+    },
+    {
+      "name": "Finish Order",
+      "request": {
+        "method": "PUT",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"paymentStatus\": \"Paid\",\n  \"cardToken\": \"mock-token-123\",\n  \"paymentGateway\": \"MockPay\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/orders/1/finish",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["orders", "1", "finish"]
+        }
+      }
+    },
+    {
+      "name": "Create Category (Bonus)",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Snacks\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/categories",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["categories"]
+        }
+      }
+    },
+    {
+      "name": "Create Product (Bonus)",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Chips\",\n  \"price\": 1.5,\n  \"categoryId\": 1,\n  \"image\": \"http://example.com/chips.png\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/products",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["products"]
+        }
+      }
+    }
+  ]
+}
